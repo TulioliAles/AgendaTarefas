@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AgendaTarefa.Models.DatasViewModel>
+
+@{
+    ViewData["Title"] = "Tarefas Agendadas";
+}
+
+@foreach(var item in Model)
+{
+    <div class="accordion" id="painelTarefas">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#@item.Identificadores">
+                            @item.Datas
+                        </button>
+                     </div>
+                     <div class="col-2">
+                        <a asp-action="CriarTarefa" asp-route-dataTarefa="@item.Datas" class="btn btn-sm btn-outline-dark">Nova Tarefa</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="@item.Identificadores" class="collapse show" data-parent="#painelTarefas">
+                <div class="card-body">
+                    VIEW COMPONENT
+                </div>
+            </div>
+        </div>
+    </div>
+}
